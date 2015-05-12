@@ -1,0 +1,24 @@
+From 231dd391962d3839e2302540e5222720821ebe5d Mon Sep 17 00:00:00 2001
+From: Vincent Rabaud <vincent.rabaud@gmail.com>
+Date: Tue, 12 May 2015 23:29:52 +0200
+Subject: [PATCH] Added install rule for package.xml
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6638861..4811d8a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,5 +56,5 @@ configure_file("${pkg_conf_file}.in" "${pkg_conf_file}" @ONLY)
+ install(TARGETS ccd ccd_static ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(DIRECTORY src/ccd DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*.h")
+-install(FILES "${pkg_conf_file}" DESTINATION
+-  ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT pkgconfig)
++install(FILES "${pkg_conf_file}" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig COMPONENT pkgconfig RENAME libccd.pc)
++install(FILES package.xml DESTINATION share/libccd)
+-- 
+1.9.1
+
